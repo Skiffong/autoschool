@@ -106,6 +106,28 @@ $(".teachers__wrapper").slick({
   ],
 });
 
+// send request
+document.querySelector(".preview__form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let data = new FormData(e.target);
 
+  data.append("project_name", window.location.href);
+  data.append("admin_email", "skiffong@gmail.com");
+  data.append("form_subject", "Форма записи на курсы");
+
+  fetch("https://avtoskola.by/mail/mail.php", {
+    // Adding method type
+    method: "POST",
+    mode: "no-cors",
+
+    // Adding body or contents to send
+    body: JSON.stringify(Object.fromEntries(data)),
+
+    // Adding headers to the request
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+});
 
 });
