@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let header__menu = document.querySelector(".header__menu");
   let lock = document.querySelector("body");
   let header__list = document.querySelector(".header__list");
-  let header__body = document.querySelector('.header__body')
+  let header__body = document.querySelector(".header__body");
 
   header__burger.onclick = function () {
     header__burger.classList.toggle("active");
@@ -51,83 +51,58 @@ document.addEventListener("DOMContentLoaded", () => {
         window.onscroll = function () {
           scrollFunction();
         };
-      } 
+      }
     },
     true
   );
-  
 
-  
-$(".auto__slider").slick({
-  infinite: true,
-  autoplay: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  dots: true,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-});
+  $(".auto__slider").slick({
+    infinite: true,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: true,
 
-$(".teachers__wrapper").slick({
-  infinite: true,
-  autoplay: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  dots: true,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-});
-
-// send request
-document.querySelector(".preview__form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  let data = new FormData(e.target);
-
-  data.append("project_name", window.location.href);
-  data.append("admin_email", "skiffong@gmail.com");
-  data.append("form_subject", "Форма записи на курсы");
-
-  fetch("https://avtoskola.by/mail/mail.php", {
-    // Adding method type
-    method: "POST",
-    mode: "no-cors",
-
-    // Adding body or contents to send
-    body: JSON.stringify(Object.fromEntries(data)),
-
-    // Adding headers to the request
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
   });
-});
 
+  $(".teachers__wrapper").slick({
+    infinite: true,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: true,
+  });
+
+  // send request
+  document.querySelector(".preview__form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    let data = new FormData(e.target);
+
+    data.append("project_name", window.location.href);
+    data.append("admin_email", "skiffong@gmail.com");
+    data.append("form_subject", "Форма записи на курсы");
+
+    fetch("https://avtoskola.by/mail/mail.php", {
+      // Adding method type
+      method: "POST",
+      mode: "no-cors",
+
+      // Adding body or contents to send
+      body: JSON.stringify(Object.fromEntries(data)),
+
+      // Adding headers to the request
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+  });
+
+  /* map scroll */
+  $(".map").click(function () {
+    $(".map iframe").css("pointer-events", "auto");
+  });
+
+  $(".map").mouseleave(function () {
+    $(".map iframe").css("pointer-events", "none");
+  });
 });

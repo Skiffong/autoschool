@@ -117,13 +117,11 @@ h3 {
   max-width: 100%;
 }
 
-.header__insta-link{
+.header__insta-link {
   z-index: 10;
-  margin-right: auto;
-}
-.header__insta{
-  color: #fedc18;
-  font-size: 40px;
+  width: 40px;
+  margin: 8px auto 0 10px;
+  display: block;
 }
 
 .header__burger {
@@ -292,13 +290,18 @@ h3 {
 /* preview styles */
 
 .preview {
-  background: url('img/header.jpg') no-repeat;
+  background: url('img/header.jpg') 50% 17% no-repeat;
   background-size: cover;
   color: #ffffff;
   margin-top: -100px;
 }
 
-.preview>.container {
+.preview__bg,
+.timing__bg {
+  background-color: rgba(0, 0, 0, 0.7)
+}
+
+.preview__bg>.container {
   display: flex;
   padding-top: 240px;
 }
@@ -538,6 +541,7 @@ h3 {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  width: 33%;
 }
 
 .about__item:last-child {
@@ -581,6 +585,7 @@ h3 {
 
   .about__item {
     margin-right: 10px;
+    width: 100%;
   }
 
   ._title {
@@ -651,7 +656,8 @@ h3 {
 .price img {
   width: 50%;
 }
-.price.partners img{
+
+.price.partners img {
   display: block;
   margin: -70px 0 0 auto;
 
@@ -793,18 +799,19 @@ h3 {
   .timing {
     margin-top: 20px;
   }
-  .timing__discription{
+
+  .timing__discription {
     font-size: 1em;
     padding: 0 0 10px 0;
   }
 
-    .timing__text {
-      font-size: 0.8em;
-    }
+  .timing__text {
+    font-size: 0.8em;
+  }
 
-    .timing__content{
-      width: 80%;
-    }
+  .timing__content {
+    width: 80%;
+  }
 }
 
 /*auto styles*/
@@ -881,6 +888,12 @@ h3 {
   text-align: center;
 }
 
+.auto__img{
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
   .auto {
     margin-top: 20px;
@@ -889,6 +902,8 @@ h3 {
   .auto__content {
     margin-top: 20px;
   }
+    .auto__img {
+      width: 90%;}
 }
 
 /*teachers styles*/
@@ -908,9 +923,19 @@ h3 {
   position: relative;
 }
 
+.slick-arrow.slick-prev {
+  left: 10%;
+  background-size: 100%;
+}
+
+.slick-arrow.slick-next {
+  right: 10%;
+  background-size: 100%;
+}
+
 .teachers__card {
-  width: 45%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   position: relative;
 }
@@ -921,11 +946,13 @@ h3 {
 }
 
 .card__img {
-  margin-right: 20px;
+  width: 70%;
+  margin: 0 AUTO;
 }
 
 .card__content {
-  width: 94%;
+  margin: 0 auto;
+  width: 50%;
   opacity: 0;
   text-align: center;
   background-color: #3f414a96;
@@ -949,24 +976,47 @@ h3 {
   }
 
   .card__title {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 
   .card__text {
-    font-size: 0.8em;
+    font-size: 0.5em;
     margin-left: 5px;
+  }
+
+    .card__content {
+      width: 90%;
+      height: 75px;
+        margin-top: -75px;
+    }
+
+  .card__img {
+    width: 90%;
+  }
+
+  .slick-arrow.slick-prev {
+    left: 3%;
+  }
+
+  .slick-arrow.slick-next {
+    right: 3%;
+  }
+
+  .slick-arrow.slick-next,
+  .slick-arrow.slick-prev {
+    background-size: 50%;
   }
 }
 
-@media screen and (max-width: 481px) {
-  .card__img {
-    margin-right: 0;
-  }
-}
+
 
 .footer {
   margin-top: 40px;
   background-color: #0d0e15;
+}
+
+.map iframe {
+  pointer-events: none;
 }
 
 .footer__title {
@@ -978,12 +1028,21 @@ h3 {
   margin: 40px 0;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer__wrapper {
-  padding: 0 10px;
+  padding: 30px;
+  width: 50%;
+}
+
+.footer__wrapper:nth-child(odd) {
   border-right: 2px dashed #ff9d2d;
-  width: 33%;
+}
+
+.footer__wrapper:nth-child(1),
+.footer__wrapper:nth-child(2) {
+  border-bottom: 2px dashed #ff9d2d;
 }
 
 .footer__wrapper:last-child {
@@ -1000,6 +1059,7 @@ h3 {
 .footer__email a {
   color: #fedc18;
   transition: all 0.5s ease 0s;
+  padding: 3px 0;
 }
 
 
@@ -1010,6 +1070,11 @@ h3 {
   text-transform: uppercase;
   color: #de5200;
   text-decoration: underline;
+}
+
+.footer__icons img {
+  width: 30px;
+  margin: 0px 0 -7px 0;
 }
 
 .footer__copyright {
@@ -1040,13 +1105,16 @@ h3 {
 
   .footer__wrapper {
     text-align: center;
-    border-right: none;
     border-bottom: 2px dashed #ff9d2d;
     width: 100%;
   }
 
   .footer__wrapper:last-child {
     border-bottom: none;
+  }
+
+  .footer__wrapper:nth-child(odd) {
+    border-right: none;
   }
 }
 
