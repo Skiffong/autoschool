@@ -73,15 +73,50 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // send request
+  const form = document.querySelector(".preview__form");
+  form.addEventListener("submit", formSend);
+
+  async function formSend(e) {
+    e.preventDefault();
+
+    let formData = new FormData(form);
+    formData.append("project_name", window.location.href);
+    formData.append("admin_email", "skiffong@gmail.com");
+    formData.append("form_subject", "Форма записи на курсы");
+
+    form.classList.add("_sending");
+
+    let response = await fetch("https://avtoskola.by/mail/mail.php", {
+      method: "POST",
+      mode: "no-cors",
+
+      // Adding body or contents to send
+      body: JSON.stringify(Object.fromEntries(data)),
+
+      // Adding headers to the request
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    if (response.ok) {
+      form.reset();
+      form.classList.remove("_sending");
+    } else {
+      alert("что-то пошло не так");
+      form.reset();
+      form.classList.remove("_sending");
+    }
+  }
+  /*
   document.querySelector(".preview__form").addEventListener("submit", (e) => {
     e.preventDefault();
     let data = new FormData(e.target);
-
     data.append("project_name", window.location.href);
     data.append("admin_email", "skiffong@gmail.com");
     data.append("form_subject", "Форма записи на курсы");
 
-    let response = fetch("https://avtoskola.by/mail/mail.php", {
+    fetch("https://avtoskola.by/mail/mail.php", {
       // Adding method type
       method: "POST",
       mode: "no-cors",
@@ -94,16 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
-    form.classList.add("._sending");
-    if (response.ok) {
-      form.reset();
-      form.classList.remove("._sending");
-    } else {
-      alert("Что-то пошло не так, попробуйте еще раз");
-      form.classList.remove("._sending");
-    }
   });
-
+*/
   /* map scroll */
   $(".map").click(function () {
     $(".map iframe").css("pointer-events", "auto");
