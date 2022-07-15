@@ -1171,6 +1171,10 @@ b {
     margin-top: 20px;
   }
 
+    .footer__wrapper{
+      padding: 0;
+    }
+
   .footer__adress {
     margin-top: 20px;
   }
