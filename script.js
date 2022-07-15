@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".preview__form");
   form.addEventListener("submit", formSend);
 
-  async function formSend(e) {
+  function formSend(e) {
     e.preventDefault();
 
     let formData = new FormData(form);
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.classList.add("_sending");
 
-    let response = await fetch("https://avtoskola.by/mail/mail.php", {
+    let response = fetch("https://avtoskola.by/mail/mail.php", {
       method: "POST",
       mode: "no-cors",
 
