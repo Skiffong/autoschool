@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mode: "no-cors",
 
       // Adding body or contents to send
-      body: JSON.stringify(Object.fromEntries(data)),
+      body: JSON.stringify(Object.fromEntries(formData)),
 
       // Adding headers to the request
       headers: {
