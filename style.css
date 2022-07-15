@@ -294,6 +294,25 @@ h3 {
   background-size: cover;
   color: #ffffff;
   margin-top: -100px;
+  position: relative;
+}
+
+.preview::after {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 51, 51, 0.9) url('img/spinner.gif') center / 50px no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease 0 ;
+}
+.preview._sending::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .preview__bg,
@@ -457,7 +476,7 @@ h3 {
 }
 
 @media screen and (max-width: 768px) {
-  .preview>.container {
+  .preview__bg>.container {
     padding-top: 170px;
     flex-direction: column;
   }
@@ -888,7 +907,7 @@ h3 {
   text-align: center;
 }
 
-.auto__img{
+.auto__img {
   width: 70%;
   margin: 0 auto;
   display: block;
@@ -902,8 +921,10 @@ h3 {
   .auto__content {
     margin-top: 20px;
   }
-    .auto__img {
-      width: 90%;}
+
+  .auto__img {
+    width: 90%;
+  }
 }
 
 /*teachers styles*/
@@ -984,11 +1005,11 @@ h3 {
     margin-left: 5px;
   }
 
-    .card__content {
-      width: 90%;
-      height: 75px;
-        margin-top: -75px;
-    }
+  .card__content {
+    width: 90%;
+    height: 75px;
+    margin-top: -75px;
+  }
 
   .card__img {
     width: 90%;
@@ -1048,6 +1069,29 @@ h3 {
 .footer__wrapper:last-child {
   padding-right: 0;
   border: none;
+}
+
+.metro {
+  position: relative;
+  padding-left: 25px;
+  display: inline-block;
+}
+
+.metro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: url(img/metro.png);
+  background-size: contain;
+  margin: 3px 0 0 0;
+}
+
+b {
+  color: #de5200;
+  font-weight: bold;
 }
 
 .footer__phone {

@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: true,
-
   });
 
   $(".teachers__wrapper").slick({
@@ -82,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     data.append("admin_email", "skiffong@gmail.com");
     data.append("form_subject", "Форма записи на курсы");
 
-    fetch("https://avtoskola.by/mail/mail.php", {
+    let response = fetch("https://avtoskola.by/mail/mail.php", {
       // Adding method type
       method: "POST",
       mode: "no-cors",
@@ -95,6 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
+    form.classList.add("._sending");
+    if (response.ok) {
+      form.reset();
+      form.classList.remove("._sending");
+    } else {
+      alert("Что-то пошло не так, попробуйте еще раз");
+      form.classList.remove("._sending");
+    }
   });
 
   /* map scroll */
