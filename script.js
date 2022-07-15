@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let formData = new FormData(form);
     formData.append("project_name", window.location.href);
-    formData.append("admin_email", "skiffong@gmail.com");
+    formData.append("admin_email", "myavtoskola@gmail.com");
     formData.append("form_subject", "Форма записи на курсы");
 
     form.classList.add("_sending");
@@ -98,15 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
-
-    if (response.ok) {
+      alert("Ваша заявка принята, скоро мы Вам перезвоним");
       form.reset();
       form.classList.remove("_sending");
-    } else {
-      alert("что-то пошло не так");
-      form.reset();
-      form.classList.remove("_sending");
-    }
+    
   }
   /*
   document.querySelector(".preview__form").addEventListener("submit", (e) => {
