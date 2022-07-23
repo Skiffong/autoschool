@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let formData = new FormData(form);
     formData.append("project_name", window.location.href);
-    formData.append("admin_email", "myavtoskola@gmail.com");
+    formData.append("admin_email", "email@email.com");//емайл куда должны приходить формы
     formData.append("form_subject", "Форма записи на курсы");
 
     form.classList.add("_sending");
